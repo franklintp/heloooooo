@@ -1,0 +1,227 @@
+/* --- CONFIGURACIÓN GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- EFECTO PÉTALOS FLOTANTES --- */
+.petals-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+.petal {
+    position: absolute;
+    background-color: #ffb7c5;
+    border-radius: 150% 0 150% 0;
+    opacity: 0.6;
+    animation: fall linear infinite;
+}
+
+/* --- CONTROLADOR DE MÚSICA --- */
+.music-control {
+    position: fixed;
+    top: 20px; right: 20px;
+    width: 45px; height: 45px;
+    background: white;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    cursor: pointer; z-index: 100;
+    transition: transform 0.3s;
+}
+.music-control:hover { transform: scale(1.1); }
+.music-control.playing { animation: spin 4s linear infinite; }
+
+/* --- CONTENEDOR APP VIRTUAL --- */
+#app {
+    width: 100%;
+    max-width: 410px;
+    height: 88vh;
+    position: relative;
+    z-index: 5;
+    padding: 15px;
+}
+
+.screen {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.screen.active {
+    display: flex;
+    animation: slideIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* --- TARJETAS --- */
+.card {
+    background: #ffffff;
+    border-radius: 24px;
+    width: 100%;
+    padding: 35px 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    text-align: center;
+    position: relative;
+}
+
+/* --- PORTADA --- */
+.card-welcome {
+    background-color: #92b9fa;
+    color: white;
+    padding: 50px 20px;
+    animation: floating 4s ease-in-out infinite;
+}
+.title-welcome { font-family: 'Alex Brush', cursive; font-size: 4rem; font-weight: 400; line-height: 1; }
+.subtitle-welcome { font-size: 1.1rem; letter-spacing: 4px; font-weight: 400; margin-top: 5px; }
+.names-row { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 35px 0; }
+.name { font-size: 1.3rem; font-weight: 400; }
+.heart-btn {
+    width: 52px; height: 52px;
+    background-color: #fff6f0;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    cursor: pointer; transition: transform 0.2s;
+}
+.heart-btn:hover { transform: scale(1.15); }
+.heart-btn span { font-size: 1.5rem; animation: heartbeat 1.5s infinite; display: inline-block; }
+.special-date { font-size: 1.1rem; letter-spacing: 1.5px; opacity: 0.95; }
+.ribbon-container { position: absolute; bottom: -32px; left: 50%; transform: translateX(-50%); }
+.ribbon { font-size: 3.5rem; }
+.hint-text { margin-top: 50px; color: #5a7fa8; font-size: 0.85rem; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.6); }
+
+/* --- SECCIONES Y TEXTOS --- */
+.section-title { font-family: 'Parisienne', cursive; font-size: 2.2rem; color: #c62828; font-weight: 400; }
+.text-red { color: #b71c1c; font-family: 'Parisienne', cursive; }
+.section-quote { font-size: 0.78rem; font-style: italic; color: #757575; margin: 10px 15px 25px 15px; line-height: 1.4; }
+.text-italic { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 400; }
+
+/* --- CALENDARIO --- */
+.calendar-box { background-color: #e3f2fd; border-radius: 18px; padding: 15px; width: 100%; }
+.month-title { font-family: 'Alex Brush', cursive; font-size: 2.3rem; color: #5c6bc0; margin-bottom: 5px; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.calendar-day { font-size: 0.85rem; padding: 6px; color: #546e7a; font-weight: 500; transition: 0.3s; }
+.calendar-day.active-day {
+    background-color: #d32f2f;
+    color: white !important;
+    border-radius: 50%;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(211,47,47,0.5);
+    animation: heartbeat 1.3s infinite alternate;
+}
+
+/* --- INTERACTIVIDAD SOBRE Y CARTA --- */
+.envelope-wrapper {
+    position: relative;
+    width: 100%; max-width: 280px; height: 180px;
+    margin: 40px auto 0 auto;
+    background-color: #f5f5f5;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+.envelope-front {
+    position: absolute; width: 0; height: 0;
+    border-left: 140px solid #eceff1; border-right: 140px solid #eceff1;
+    border-bottom: 90px solid #cfd8dc; border-top: 90px solid transparent;
+    bottom: 0; z-index: 20; border-radius: 0 0 8px 8px;
+}
+.envelope-back {
+    position: absolute; width: 100%; height: 100%;
+    background: #e0e0e0; z-index: 5; border-radius: 0 0 8px 8px;
+}
+.envelope-top {
+    position: absolute; top: 0; left: 0; width: 0; height: 0;
+    border-left: 140px solid transparent; border-right: 140px solid transparent;
+    border-top: 95px solid #b0bec5;
+    transform-origin: top; transition: transform 0.4s ease 0.4s; z-index: 25;
+}
+.envelope-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    z-index: 30; font-size: 0.85rem; font-weight: 500; color: #37474f; transition: opacity 0.3s;
+}
+.letter {
+    position: absolute; bottom: 10px; left: 5%; width: 90%; height: 85%;
+    background: #ffffff; padding: 15px; border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05); text-align: justify;
+    font-size: 0.72rem; line-height: 1.5; color: #b71c1c; font-style: italic;
+    transition: transform 0.5s ease, height 0.5s ease; z-index: 10;
+    overflow-y: auto;
+}
+.letter-footer { text-align: center; margin-top: 10px; font-weight: 600; }
+
+/* Animación de apertura */
+.envelope-wrapper.open .envelope-top { transform: rotateX(180deg); z-index: 5; transition: transform 0.4s ease; }
+.envelope-wrapper.open .letter { transform: translateY(-110px); height: 120%; z-index: 15; transition: transform 0.5s ease 0.4s, height 0.5s ease 0.4s; }
+.envelope-wrapper.open .envelope-text { opacity: 0; }
+.layout-spacing { margin-top: 100px; }
+
+/* --- PANTALLA 4: DECLARACIÓN CON COLIBRÍES --- */
+.clean-card { background: #fffcf9; padding: 40px 25px; }
+.hummingbird { position: absolute; font-size: 1.8rem; opacity: 0.75; }
+.left-bird { top: 15px; left: 15px; animation: gentleFloat 3s ease-in-out infinite alternate; }
+.right-bird { top: 15px; right: 15px; transform: scaleX(-1); animation: gentleFloat 3.5s ease-in-out infinite alternate; }
+.declaration-text { font-size: 0.85rem; line-height: 1.7; text-align: justify; color: #4e342e; margin-top: 15px; }
+.declaration-text p { margin-bottom: 15px; }
+
+/* --- PANTALLA 5: POLAROID Y PUZZLE --- */
+.polaroid-frame {
+    background: white; padding: 12px 12px 35px 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: rotate(-1.5deg); width: 85%; margin: 15px auto;
+    position: relative; border: 1px solid #eee;
+}
+.polaroid-img { width: 100%; height: 210px; object-fit: cover; border-radius: 2px; }
+.sticker { position: absolute; font-size: 1.3rem; z-index: 40; }
+.stamp { top: -8px; right: -5px; transform: rotate(15deg); }
+.heart-post { bottom: 40px; left: -10px; }
+
+/* Rompecabezas */
+.puzzle-container { display: flex; gap: 4px; position: absolute; bottom: -15px; right: 20px; z-index: 45; }
+.puzzle-piece {
+    background: #c62828; color: white; font-size: 0.65rem; font-weight: bold;
+    padding: 6px 10px; border-radius: 4px; box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    position: relative;
+}
+.piece-1 { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.piece-2 { background: #b71c1c; border-top-left-radius: 0; border-bottom-left-radius: 0; }
+
+/* Máquina de escribir */
+.typewriter-box { min-height: 55px; margin-top: 25px; display: flex; justify-content: center; align-items: center; }
+#typewriter-text { font-family: 'Alex Brush', cursive; font-size: 1.7rem; color: #c62828; font-weight: 500; }
+
+/* --- BOTONES DE NAVEGACIÓN --- */
+.nav-btns { display: flex; gap: 15px; justify-content: center; margin-top: 25px; width: 100%; }
+.btn {
+    padding: 10px 25px; border-radius: 25px; border: none;
+    font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.85rem;
+    cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.btn-back { background-color: #f5f5f5; color: #78909c; }
+.btn-next { background-color: #c62828; color: white; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+
+/* --- ANIMACIONES CSS --- */
+@keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+@keyframes gentleFloat { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }

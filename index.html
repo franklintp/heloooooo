@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia - Maria & Luis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="petals-container" id="petals"></div>
+
+    <div class="music-control" id="music-btn" title="Reproducir música">
+        <span class="music-icon">🎵</span>
+        <audio id="bg-audio" src="hola.mp3" loop></audio>
+    </div>
+
+    <main id="app">
+
+        <section class="screen active" id="screen-1">
+            <div class="card card-welcome">
+                <h1 class="title-welcome">Feliz</h1>
+                <h2 class="subtitle-welcome">MESIVERSARIO</h2>
+                
+                <div class="names-row">
+                    <span class="name">LIZ</span>
+                    <div class="heart-btn" id="start-trigger">
+                        <span>❤️</span>
+                    </div>
+                    <span class="name">FRANK</span>
+                </div>
+
+                <p class="special-date">16.03.2025</p>
+
+                <div class="ribbon-container">
+                    <div class="ribbon">🎀</div>
+                </div>
+            </div>
+            <p class="hint-text">Toca el corazón </p>
+        </section>
+
+        <section class="screen" id="screen-2">
+            <div class="card">
+                <h2 class="section-title"> meses juntos</h2>
+                <p class="section-quote">Cada palabra es un hilo que teje la historia que quiero construir contigo.</p>
+                
+                <div class="calendar-box">
+                    <p class="month-title">Junio</p>
+                    <div class="calendar-grid" id="calendar-days"></div>
+                </div>
+
+                <div class="nav-btns">
+                    <button class="btn btn-next" data-next="3">NEXT</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="screen" id="screen-3">
+            <div class="card">
+                <h2 class="section-title">meses juntos</h2>
+                <p class="section-quote">Cada palabra es un hilo que teje la historia que quiero construir contigo.</p>
+                
+                <div class="envelope-wrapper" id="envelope">
+                    <div class="envelope-back"></div>
+                    <div class="letter" id="letter-content">
+                        <p>Celebro cada instante, cada risa y cada silencio compartido. Celebro la magia de coincidir y de haber construido algo que me llena de ilusión y esperanza. Lo nuestro es un camino que no quiero dejar de recorrer. Gracias por ser parte de mi vida, por estar aquí y por regalarme momentos que jamás olvidaré.</p>
+                        <p class="letter-footer">Feliz , por este y por todos los que nos esperan. ❤️</p>
+                    </div>
+                    <div class="envelope-front"></div>
+                    <div class="envelope-top"></div>
+                    <div class="envelope-text">Toca para abrir 💌</div>
+                </div>
+
+                <div class="nav-btns layout-spacing">
+                    <button class="btn btn-back" data-back="2">BACK</button>
+                    <button class="btn btn-next" data-next="4">NEXT</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="screen" id="screen-4">
+            <div class="card clean-card">
+                <div class="hummingbird left-bird">🕊️</div>
+                <div class="hummingbird right-bird">🕊️</div>
+
+                <h2 class="section-title text-red">Lo que siento por ti.</h2>
+                <p class="section-quote text-italic">No pasa un solo día sin que aparezcas en mi mente.</p>
+                
+                <div class="declaration-text">
+                    <p>Lo que siento es difícil de resumir en unas pocas palabras, porque va más allá de lo que el tiempo puede medir. Es una mezcla de paz y alegría, como si cada instante a tu lado se transformara en un recuerdo eterno. Hay algo en la manera en que compartimos lo simple que lo convierte en extraordinario.</p>
+                    <p>Es sentir que no importa el lugar ni el momento, porque mientras exista la conexión que tenemos, todo lo demás se vuelve secundario. Es descubrir que el amor se esconde en los detalles más...</p>
+                </div>
+
+                <div class="nav-btns">
+                    <button class="btn btn-back" data-back="3">BACK</button>
+                    <button class="btn btn-next" data-next="5">NEXT</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="screen" id="screen-5">
+            <div class="card clean-card">
+                <h2 class="section-title text-red" style="font-size: 1.8rem;">Tú eres la parte que... completa todo</h2>
+                
+                <div class="polaroid-frame">
+                    <div class="sticker stamp">✨</div>
+                    <div class="sticker heart-post">💝</div>
+                    <img src="123.jpeg" alt="Nosotros" class="polaroid-img">
+                    
+                    <div class="puzzle-container">
+                        <div class="puzzle-piece piece-1">ME</div>
+                        <div class="puzzle-piece piece-2">YOU</div>
+                    </div>
+                </div>
+
+                <div class="typewriter-box">
+                    <p id="typewriter-text"></p>
+                </div>
+
+                <div class="nav-btns">
+                    <button class="btn btn-back" data-back="4">BACK</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
